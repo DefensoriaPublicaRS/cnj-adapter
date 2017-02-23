@@ -1,0 +1,24 @@
+{
+  "name": "cnj-adapter",
+  "version": "0.0.1",
+  "description": "Adaptador para consulas ao webservice do cnj",
+  "main": "application.js",
+  "scripts": {
+    "test": "node node_modules/jasmine/bin/jasmine.js",
+    "install": "curl https://www.cnj.jus.br/sgt/sgt_ws.php?wsdl --insecure -s > sgt_ws.wsdl",
+    "start": "node application.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cloud-config-client": "^0.3.1",
+    "eureka-js-client": "^4.3.0",
+    "express": "^4.14.1",
+    "minimist": "^1.2.0",
+    "soap": "^0.18.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.5.3",
+    "request": "^2.79.0"
+  }
+}
