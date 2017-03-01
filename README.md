@@ -17,6 +17,7 @@ Argumentos
 
 --server.port=8080
 --profiles=development
+--publicIp=ip da primeira interface de rede encontrada na máquina
 
 ### Para passar os argumentos:
 

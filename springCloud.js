@@ -3,8 +3,7 @@ const client = require("cloud-config-client");
 const Eureka = require('eureka-js-client').Eureka;
 var express = require('express');
 var router = express.Router();
-
-var network = require('./network');
+var instanceInformation = require('./instanceInformation');
 
 var springCloud = {
     init: function(bootstrap){
@@ -24,29 +23,11 @@ var springCloud = {
 
                 var defaultZone = config.get('eureka.client.serviceUrl.defaultZone');
 
-                var hostname = network.hostname();
-                var  ip = network.getIpv4s()[0];
 
                 console.log("registering in eureka: " + defaultZone);
-                var instanceInformation = {
-                    app: bootstrap.application,
-                    port: {
-                        '$': bootstrap.serverPort,
-                        '@enabled': true,
-                    },
-                    hostName: ip,
-                    statusPageUrl: 'http://'+ip+':'+bootstrap.serverPort+'/info',
-                    ipAddr: ip,
-                    dataCenterInfo: {
-                        '@class': "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
-                        name: 'MyOwn',
-                    },
-                    vipAddress: bootstrap.application,
-                    status:"UP"
-                };
 
                 const client = new Eureka({
-                  instance: instanceInformation,
+                  instance: instanceInformation(bootstrap),
                   eureka: {
                     serviceUrls:{
                         default: [defaultZone+'apps']

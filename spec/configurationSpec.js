@@ -29,4 +29,10 @@ describe("configuration", function() {
         expect(configuration.serverPort).toEqual(654987);
     });
 
+    it ("deve setar public ip pela variavel de ambiente", function(){
+        process.env.PUBLIC_IP = '123.123.123.123';
+        var configuration = config.get();
+        expect(configuration.publicIp).toEqual('123.123.123.123');
+    });
+
 });
