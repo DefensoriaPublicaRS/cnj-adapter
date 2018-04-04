@@ -1,14 +1,14 @@
 {
   "name": "cnj-adapter",
   "version": "0.0.1",
-  "description": "Adaptador para consulas ao webservice do cnj",
+  "description": "Adaptador para consultas ao webservice do cnj",
   "main": "application.js",
   "scripts": {
     "test": "node node_modules/jasmine/bin/jasmine.js",
     "install": "curl https://www.cnj.jus.br/sgt/sgt_ws.php?wsdl --insecure -s > sgt_ws.wsdl",
     "start": "node application.js"
   },
-  "author": "",
+  "author": "Defensoria Pública do Estado do Rio Grande do Sul",
   "license": "ISC",
   "dependencies": {
     "cloud-config-client": "^0.3.1",
